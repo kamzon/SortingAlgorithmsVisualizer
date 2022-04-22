@@ -13,6 +13,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
+
+
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
 add_subdirectory(src)
