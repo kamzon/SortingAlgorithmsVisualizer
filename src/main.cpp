@@ -2,11 +2,12 @@
 #include<vector>
 #include <SFML/Graphics.hpp>
 #include <display.h>
+#include <rectangle.h>
 
 
 using namespace std;
 using namespace sf;
-
+using namespace forms;
 
 
 int main() {
@@ -47,10 +48,26 @@ int main() {
     DrawInWindow(image,hight , width);
 
     sf::Texture Texture;
-    Texture.loadFromImage(image);
+    // Texture.loadFromImage(image);
 
     sf::Sprite Sprite;
+    // Sprite.setTexture(Texture);
+
+    Rectangle rec{200,50,image.getSize().y - 200};
+
+    // DrawInRectangle(image, rec);
+    cout << rec.x_pos()<< " " << rec.y_pos();
+
+    for (unsigned i=0; i<rec.width(); i++){
+        for (unsigned j=0; j<rec.hight(); j++){
+            image.setPixel(rec.x_pos()+i,rec.y_pos()-j,sf::Color(177,250,250));
+            
+        }
+    }
+
+    Texture.loadFromImage(image);
     Sprite.setTexture(Texture);
+
 
     while (window.isOpen())
     {
