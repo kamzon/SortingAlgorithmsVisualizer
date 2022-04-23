@@ -3,15 +3,43 @@
 
 using namespace std;
 
-void BubbleSort(std::vector<forms::Rectangle> &rectList){
+void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::RenderWindow &window, sf::Texture texture, sf::Sprite sprite){
     forms::Rectangle temp_rec;
     int temp_x_location;
 
-    for(int i=0; i<rectList.size() ;i++){
-        for(int j=0; j<rectList.size()-1; j++){
+	int lenght = rectList.size();
+    for(int i=0; i<lenght ;i++){
+        for(int j=0; j<lenght-1; j++){
 
             if (rectList[j].hight() > rectList[j+1].hight())
             {
+                window.clear();
+				//Moave bigge
+				for (unsigned int x = 0; x < rectList[j].width(); x++)
+				{
+					for (unsigned int y = 0; y < rectList[j].hight(); y++)
+					{
+						image.setPixel(rectList[j + 1].x_pos() + x, rectList[j].y_pos() + y, sf::Color(177,100,100));
+					}
+				}
+
+                //Delete the Big
+				for (unsigned int x = 0; x < rectList[j].width(); x++)
+				{
+					for (unsigned int y = 0; y < rectList[j].hight(); y++)
+					{
+						image.setPixel(rectList[j].x_pos() + x, rectList[j].y_pos() + y, sf::Color(255,255,255));
+					}
+				}
+
+                //Redraw Small 
+				for (unsigned int x = 0; x < rectList[j + 1].width(); x++)
+				{
+					for (unsigned int y = 0; y < rectList[j + 1].hight(); y++)
+					{
+						image.setPixel(rectList[j].x_pos() + x, rectList[j + 1].y_pos() + y, sf::Color(177,100,100));
+					}
+				}
                 
                 temp_x_location = rectList[j].x_pos();
                 rectList[j].setX_pos(rectList[j+1].x_pos());
@@ -22,7 +50,14 @@ void BubbleSort(std::vector<forms::Rectangle> &rectList){
                 rectList[j] = rectList[j+1];
                 rectList[j+1] = temp_rec;
 
+                texture.loadFromImage(image);
+				sprite.setTexture(texture);
+
+				window.draw(sprite);
+				window.display();
+
             }
+
             
         }
     }

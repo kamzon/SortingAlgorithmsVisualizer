@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <rectangle.h>
 
-const int hight = 1200;
-const int width = 800;
+const int width = 1500;
+const int hight = 800;
 
 
 void DrawInWindow(sf::Image& img);

@@ -9,8 +9,8 @@ using namespace std;
 
 void DrawInWindow(sf::Image& img){
 
-    for (unsigned i=0; i<hight; i++){
-        for (unsigned j=0; j<width; j++){
+    for (unsigned i=0; i<width; i++){
+        for (unsigned j=0; j<hight; j++){
             img.setPixel(i,j,sf::Color(255,255,255));
         }
     }
@@ -41,19 +41,15 @@ void FillVector(std::vector<forms::Rectangle> &vecRectangles, sf::Image Image){
     {
         int h = rand() % Image.getSize().y - 50;
         
-        // if (h> hight)
-        // {
-        //     h = rand() % Image.getSize().y - 50;
-        // }
-        if (h<5){
-            h=5;
+        if (h<2){
+            h=2;
         }        
         
         forms::Rectangle rec{h,xoffset,image_size_y - h};
 
         vecRectangles.push_back(rec);
 
-        xoffset+=rec.width();
+        xoffset+=5;
         h=0;
 
     }

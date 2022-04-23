@@ -1,6 +1,8 @@
 add_library(display display.cpp)
 
-add_library(rectangel rectangle.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/src/rectangle)
+
+add_library(rectangel rectangle/rectangle.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/src/bubbleSorting)
 
