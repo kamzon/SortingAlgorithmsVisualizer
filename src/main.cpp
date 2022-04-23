@@ -12,6 +12,8 @@ using namespace forms;
 
 int main() {
 
+    srand(time(NULL));
+
     // std::vector<int> table = {12,88,71,3300,3301,3333,1,2,20,13};
     // int lenght = table.size();
 
@@ -43,31 +45,22 @@ int main() {
 
     sf::Image image;
 
+    sf::Texture Texture;
+
+    sf::Sprite Sprite;
+
     image.create(hight,width);
 
     DrawInWindow(image,hight , width);
 
-    sf::Texture Texture;
-    // Texture.loadFromImage(image);
+    vector<Rectangle> ListRectangles;
 
-    sf::Sprite Sprite;
-    // Sprite.setTexture(Texture);
+    FillVector(ListRectangles,image);
 
-    Rectangle rec{200,50,image.getSize().y - 200};
-
-    // DrawInRectangle(image, rec);
-    cout << rec.x_pos()<< " " << rec.y_pos();
-
-    for (unsigned i=0; i<rec.width(); i++){
-        for (unsigned j=0; j<rec.hight(); j++){
-            image.setPixel(rec.x_pos()+i,rec.y_pos()-j,sf::Color(177,250,250));
-            
-        }
-    }
+    DrawInVector(image, ListRectangles);
 
     Texture.loadFromImage(image);
     Sprite.setTexture(Texture);
-
 
     while (window.isOpen())
     {
