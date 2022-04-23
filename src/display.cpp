@@ -7,10 +7,10 @@
 using namespace forms;
 using namespace std;
 
-void DrawInWindow(sf::Image& img, unsigned hight, unsigned width){
+void DrawInWindow(sf::Image& img){
 
-    for (unsigned i=0; i<width; i++){
-        for (unsigned j=0; j<hight; j++){
+    for (unsigned i=0; i<hight; i++){
+        for (unsigned j=0; j<width; j++){
             img.setPixel(i,j,sf::Color(255,255,255));
         }
     }
@@ -41,10 +41,10 @@ void FillVector(std::vector<forms::Rectangle> &vecRectangles, sf::Image Image){
     {
         int h = rand() % Image.getSize().y - 50;
         
-        while (h> hight)
-        {
-            h = rand() % Image.getSize().y - 50;
-        }
+        // if (h> hight)
+        // {
+        //     h = rand() % Image.getSize().y - 50;
+        // }
         if (h<5){
             h=5;
         }        

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <display.h>
 #include <rectangle.h>
+#include <bubble_sort.h>
 
 
 using namespace std;
@@ -13,6 +14,8 @@ using namespace forms;
 int main() {
 
     srand(time(NULL));
+
+    bool spaceIspressed = false;
 
     // std::vector<int> table = {12,88,71,3300,3301,3333,1,2,20,13};
     // int lenght = table.size();
@@ -40,7 +43,7 @@ int main() {
 
     
 
-    sf::RenderWindow window(sf::VideoMode(hight, hight), "Sorting");
+    sf::RenderWindow window(sf::VideoMode(hight, width), "Sorting");
     sf::Event ev;
 
     sf::Image image;
@@ -51,7 +54,7 @@ int main() {
 
     image.create(hight,width);
 
-    DrawInWindow(image,hight , width);
+    DrawInWindow(image);
 
     vector<Rectangle> ListRectangles;
 
@@ -68,7 +71,34 @@ int main() {
         {
             if (ev.type == sf::Event::Closed)
                 window.close();
+
+            if (ev.type == sf::Event::KeyReleased)
+			{
+				if(ev.key.code == sf::Keyboard::Space)
+				{
+					spaceIspressed = true;
+				}
+			}
         }
+
+        Texture.loadFromImage(image);
+        Sprite.setTexture(Texture);
+
+        if (spaceIspressed)
+        {
+            BubbleSort(ListRectangles);
+
+            DrawInWindow(image);
+
+            DrawInVector(image, ListRectangles);
+
+            Texture.loadFromImage(image);
+            Sprite.setTexture(Texture);
+
+            spaceIspressed = false;
+        }
+        
+
 
         window.clear();
 

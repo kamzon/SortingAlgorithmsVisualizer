@@ -2,6 +2,10 @@ add_library(display display.cpp)
 
 add_library(rectangel rectangle.cpp)
 
+include_directories(${PROJECT_SOURCE_DIR}/src/bubbleSorting)
+
+add_library(bubbleSort bubbleSorting/bubble_sort.cpp)
+
 
 find_package(SFML 2.5 
     COMPONENTS 
@@ -16,6 +20,7 @@ target_include_directories(main
 
 target_link_libraries(main sfml-graphics 
                             display 
-                            rectangel)
+                            rectangel
+                            bubbleSort)
 
 
