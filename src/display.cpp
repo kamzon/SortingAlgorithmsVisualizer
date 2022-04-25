@@ -11,7 +11,15 @@ void DrawInWindow(sf::Image& img){
 
     for (unsigned i=0; i<width; i++){
         for (unsigned j=0; j<hight; j++){
-            img.setPixel(i,j,sf::Color(255,255,255));
+            // if (i>200)
+            // {
+                /* code */
+                img.setPixel(i,j,sf::Color(0,0,0));
+                
+            // }else{
+            //     img.setPixel(i,j,sf::Color(34, 48, 60));
+            // }
+            
         }
     }
    
@@ -23,7 +31,7 @@ void DrawInVector(sf::Image& img, std::vector<forms::Rectangle> &vecRectangles )
 
         for (unsigned i=0; i<vecRectangles[k].width(); i++){
             for (unsigned j=0; j<vecRectangles[k].hight(); j++){
-                img.setPixel(vecRectangles[k].x_pos()+i,vecRectangles[k].y_pos()+j,sf::Color(177,100,100));
+                img.setPixel(vecRectangles[k].x_pos()+i,vecRectangles[k].y_pos()+j,sf::Color(200,255,255));
             }
         }
 

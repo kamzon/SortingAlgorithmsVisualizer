@@ -16,6 +16,7 @@ int main() {
     srand(time(NULL));
 
     bool spaceIspressed = false;
+    bool rIspressed = false;
     
 
     sf::RenderWindow window(sf::VideoMode(width, hight), "Sorting");
@@ -54,6 +55,13 @@ int main() {
 					spaceIspressed = true;
 				}
 			}
+            if (ev.type == sf::Event::KeyReleased)
+			{
+				if(ev.key.code == sf::Keyboard::R)
+				{
+					rIspressed = true;
+				}
+			}
         }
 
         Texture.loadFromImage(image);
@@ -61,16 +69,19 @@ int main() {
 
         if (spaceIspressed)
         {
-            BubbleSort(ListRectangles, image, window, Texture, Sprite);
+            BubbleSort(ListRectangles, image, window, Texture, Sprite,spaceIspressed,rIspressed);
+        }
+        if (rIspressed)
+        {
+            DrawInWindow(image);
 
-            // DrawInWindow(image);
+            ListRectangles.clear();
 
-            // DrawInVector(image, ListRectangles);
+            FillVector(ListRectangles,image);
 
-            // Texture.loadFromImage(image);
-            // Sprite.setTexture(Texture);
+            DrawInVector(image, ListRectangles);
 
-            spaceIspressed = false;
+            rIspressed = false;
         }
         
 

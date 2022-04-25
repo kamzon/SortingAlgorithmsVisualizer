@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::RenderWindow &window, sf::Texture texture, sf::Sprite sprite){
+void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::RenderWindow &window, sf::Texture texture, sf::Sprite sprite, bool &space, bool &R){
     forms::Rectangle temp_rec;
     int temp_x_location;
 
@@ -19,7 +19,7 @@ void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::Re
 				{
 					for (unsigned int y = 0; y < rectList[j].hight(); y++)
 					{
-						image.setPixel(rectList[j + 1].x_pos() + x, rectList[j].y_pos() + y, sf::Color(177,100,100));
+						image.setPixel(rectList[j + 1].x_pos() + x, rectList[j].y_pos() + y, sf::Color(200,255,255));
 					}
 				}
 
@@ -28,7 +28,7 @@ void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::Re
 				{
 					for (unsigned int y = 0; y < rectList[j].hight(); y++)
 					{
-						image.setPixel(rectList[j].x_pos() + x, rectList[j].y_pos() + y, sf::Color(255,255,255));
+						image.setPixel(rectList[j].x_pos() + x, rectList[j].y_pos() + y, sf::Color(0,0,0));
 					}
 				}
 
@@ -37,7 +37,7 @@ void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::Re
 				{
 					for (unsigned int y = 0; y < rectList[j + 1].hight(); y++)
 					{
-						image.setPixel(rectList[j].x_pos() + x, rectList[j + 1].y_pos() + y, sf::Color(177,100,100));
+						image.setPixel(rectList[j].x_pos() + x, rectList[j + 1].y_pos() + y, sf::Color(200,255,255));
 					}
 				}
                 
@@ -61,4 +61,7 @@ void BubbleSort(std::vector<forms::Rectangle> &rectList,sf::Image& image, sf::Re
             
         }
     }
+
+	space =false;
+	R = false;
 }
